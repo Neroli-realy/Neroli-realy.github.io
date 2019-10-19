@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Ctf-Writeups</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Neroli" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="CTF-Writeups" />
+<meta property="og:description" content="CTF-Writeups" />
+<link rel="canonical" href="https://Neroli.github.io/" />
+<meta property="og:url" content="https://Neroli.github.io/" />
+<meta property="og:site_name" content="Neroli" />
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/ad.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+ </head><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-97164925-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-97164925-2');
+</script>
+
+<body>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="author-box">
+<img src="/avatar.png" class="author-avatar" href="/">
+<h7>
+	<a href="https://www.facebook.com/yasser.aly.15">Neroli</a><br>
+	Software Developer / Cyber Security Lover. <br>
+	Trying to get every thing and how it works, and miss with it lil bit.
+</h7>
+</div>
+
+<div class="post-description">VaultDoors Writeups</div>
+  
+  <hr>
+
+<h2 id="quick-summary">Quick Summary</h2>
+<p><br>hey here is my write-up for all the java challenges in pico ctf...hope you like it.
+<br></p>
+<hr>
+
+
+<h2 id="VaultDoor0">VaultDoor0 (50 point)</h2>
+<p><br>ok this one is like saying hi to u XD .... as you can see if we opened the code in <code class="highlighter-rouge">VaultDoorTraining</code> file </p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>import java.util.*;
+
+    class VaultDoorTraining {
+        public static void main(String args[]) {
+            VaultDoorTraining vaultDoor = new VaultDoorTraining();
+            Scanner scanner = new Scanner(System.in); 
+            System.out.print("Enter vault password: ");
+            String userInput = scanner.next();
+        String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+        if (vaultDoor.checkPassword(input)) {
+            System.out.println("Access granted.");
+        } else {
+            System.out.println("Access denied!");
+        }
+       }
+    
+        // The password is below. Is it safe to put the password in the source code?
+        // What if somebody stole our source code? Then they would know what our
+        // password is. Hmm... I will think of some ways to improve the security
+        // on the other doors.
+        //
+        // -Minion #9567
+        public boolean checkPassword(String password) {
+            return password.equals("w4rm1ng_Up_w1tH_jAv4_ca5ae7fcc95");
+        }
+    }
+</code></pre></div></div>  
+
+<p><br> as we can see we got to enter password which the script pass it to method called <code class="highlight"> checkPassword()</code> which checks if our input eqals <h5>w4rm1ng_Up_w1tH_jAv4_ca5ae7fcc95</h5></code></p>
+    
+<p><br> so the flag is: <h5>picoCTF{w4rm1ng_Up_w1tH_jAv4_ca5ae7fcc95}</h5></p>
+<hr>
+
+<h2 id="VaultDoor1">VaultDoor1 (100 points)</h2>
+<p><br>now let's get another one ... let's get to the code :</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>import java.util.*;
+
+    class VaultDoor1 {
+        public static void main(String args[]) {
+            VaultDoor1 vaultDoor = new VaultDoor1();
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter vault password: ");
+        String userInput = scanner.next();
+        String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+        if (vaultDoor.checkPassword(input)) {
+            System.out.println("Access granted.");
+        } else {
+            System.out.println("Access denied!");
+        }
+        }
+    
+        // I came up with a more secure way to check the password without putting
+        // the password itself in the source code. I think this is going to be
+        // UNHACKABLE!! I hope Dr. Evil agrees...
+        //
+        // -Minion #8728
+        public boolean checkPassword(String password) {
+            return password.length() == 32 &&
+                   password.charAt(0)  == 'd' &&
+                   password.charAt(29) == '7' &&
+                   password.charAt(4)  == 'r' &&
+                   password.charAt(2)  == '5' &&
+                   password.charAt(23) == 'r' &&
+                   password.charAt(3)  == 'c' &&
+                   password.charAt(17) == '4' &&
+                   password.charAt(1)  == '3' &&
+                   password.charAt(7)  == 'b' &&
+                   password.charAt(10) == '_' &&
+                   password.charAt(5)  == '4' &&
+                   password.charAt(9)  == '3' &&
+                   password.charAt(11) == 't' &&
+                   password.charAt(15) == 'c' &&
+                   password.charAt(8)  == 'l' &&
+                   password.charAt(12) == 'H' &&
+                   password.charAt(20) == 'c' &&
+                   password.charAt(14) == '_' &&
+                   password.charAt(6)  == 'm' &&
+                   password.charAt(24) == '5' &&
+                   password.charAt(18) == 'r' &&
+                   password.charAt(13) == '3' &&
+                   password.charAt(19) == '4' &&
+                   password.charAt(21) == 'T' &&
+                   password.charAt(16) == 'H' &&
+                   password.charAt(27) == '3' &&
+                   password.charAt(30) == 'a' &&
+                   password.charAt(25) == '_' &&
+                   password.charAt(22) == '3' &&
+                   password.charAt(28) == 'b' &&
+                   password.charAt(26) == '0' &&
+                   password.charAt(31) == '0';
+        }
+    }
+    
+</code></pre></div></div>  
+<p><br>as we can see here this time the method checks 2 things ... first is the length of the password is 32 char and checks specific chars in order.....so let's reverse this by this script:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>import java.util.*;
+
+    class VaultDoor1 {
+        public static void main(String args[]) {
+          String[] passw = new String[32];
+            
+                   passw[0]  = "d" ;
+                   passw[29] = "2" ;
+                   passw[4]  = "r" ;
+                   passw[2]  = "5" ;
+                   passw[23] = "r" ;
+                   passw[3]  = "c" ;
+                   passw[17] = "4" ;
+                   passw[1]  = "3" ;
+                   passw[7]  = "b" ;
+                   passw[10] = "_" ;
+                   passw[5]  = "4" ;
+                   passw[9]  = "3" ;
+                   passw[11] = "t" ;
+                   passw[15] = "c" ;
+                   passw[8]  = "l" ;
+                   passw[12] = "H" ;
+                   passw[20] = "c" ;
+                   passw[14] = "_" ;
+                   passw[6]  = "m" ;
+                   passw[24] = "5" ;
+                   passw[18] = "r" ;
+                   passw[13] = "3" ;
+                   passw[19] = "4" ;
+                   passw[21] = "T" ;
+                   passw[16] = "H" ;
+                   passw[27] = "1" ;
+                   passw[30] = "d" ;
+                   passw[25] = "_" ;
+                   passw[22] = "3" ;
+                   passw[28] = "2" ;
+                   passw[26] = "1" ;
+                   passw[31] = "9";
+           for(int i = 0; i < 32; i++)
+              System.out.print(passw[i]);
+        }
+    
+        // I came up with a more secure way to check the password without putting
+        // the password itself in the source code. I think this is going to be
+        // UNHACKABLE!! I hope Dr. Evil agrees...
+        //
+        // -Minion #8728
+        
+    }
+</code></pre></div></div>  
+<p><br> which writes the elements of the array that contains the password and returns our flag:</p>
+<h5>picoCTF{d35cr4mbl3_tH3_cH4r4cT3r5_1122d9}</h5>
+<hr>
+
+<h2 id="VaultDoor3">VaultDoor3 (200 points)</h2>
+<p><br>so it's so easy till now... this time if you tried to solve it manually it will take some time... i think xD:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>import java.util.*;
+
+    class VaultDoor3 {
+        public static void main(String args[]) {
+            VaultDoor3 vaultDoor = new VaultDoor3();
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter vault password: ");
+            String userInput = scanner.next();
+        String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+        if (vaultDoor.checkPassword(input)) {
+            System.out.println("Access granted.");
+        } else {
+            System.out.println("Access denied!");
+            }
+        }
+    
+        // Our security monitoring team has noticed some intrusions on some of the
+        // less secure doors. Dr. Evil has asked me specifically to build a stronger
+        // vault door to protect his Doomsday plans. I just *know* this door will
+        // keep all of those nosy agents out of our business. Mwa ha!
+        //
+        // -Minion #2671
+        public boolean checkPassword(String password) {
+            if (password.length() != 32) {
+                return false;
+            }
+            char[] buffer = new char[32];
+            int i;
+            for (i=0; i<8; i++) {
+                buffer[i] = password.charAt(i);
+            }
+            for (; i<16; i++) {
+                buffer[i] = password.charAt(23-i);
+            }
+            for (; i<32; i+=2) {
+                buffer[i] = password.charAt(46-i);
+            }
+            for (i=31; i>=17; i-=2) {
+                buffer[i] = password.charAt(i);
+            }
+            String s = new String(buffer);
+            return s.equals("jU5t_a_sna_3lpm13gc49_u_4_m0rf41");
+        }
+    }
+    
+</code></pre></div></div>  
+
+<p><br> so the method do some basic checks such that the password is a shuffle of the flag so we just need to reverse this shuffling .. so i did it using this script:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>import java.util.*;
+
+    class VaultDoor3 {
+        public static void main(String args[]) {
+           char[] s = new char[32];
+           String buffer = "jU5t_a_sna_3lpm11g041_u_4_m5ra46";
+           int i;
+            for (i=0; i<8; i++) {
+                s[i] = buffer.charAt(i);
+            }
+            for (; i<16; i++) {
+               s[23-i] = buffer.charAt(i);
+            }
+            for (; i<32; i+=2) {
+               s[46-i] = buffer.charAt(i);
+            }
+            for (i=31; i>=17; i-=2) {
+                s[i] = buffer.charAt(i);
+            }
+            String result = new String(s);
+            System.out.println(result);
+        }
+    
+        // Our security monitoring team has noticed some intrusions on some of the
+        // less secure doors. Dr. Evil has asked me specifically to build a stronger
+        // vault door to protect his Doomsday plans. I just *know* this door will
+        // keep all of those nosy agents out of our business. Mwa ha!
+        //
+        // -Minion #2671
+    
+    }
+    
+</code></pre></div></div>  
+
+<p><br> it's like we need to check if 'x' is in the 'c' place in the password .... so what i did is .... (put x in c) so we got the flag: </p>
+<h5>picoCTF{jU5t_a_s1mpl3_an4gr4m_4_u_150a16}</h5>
+<hr>
+
+<h2 id="VaultDoor4">VaultDoor4 (250 points)</h2>
+<p><br>easy....let's see, when we open the code file we got:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>import java.util.*;
+
+    class VaultDoor4 {
+        public static void main(String args[]) {
+            VaultDoor4 vaultDoor = new VaultDoor4();
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter vault password: ");
+            String userInput = scanner.next();
+        String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+        if (vaultDoor.checkPassword(input)) {
+            System.out.println("Access granted.");
+        } else {
+            System.out.println("Access denied!");
+            }
+        }
+    
+        // I made myself dizzy converting all of these numbers into different bases,
+        // so I just *know* that this vault will be impenetrable. This will make Dr.
+        // Evil like me better than all of the other minions--especially Minion
+        // #5620--I just know it!
+        //
+        //  .:::.   .:::.
+        // :::::::.:::::::
+        // :::::::::::::::
+        // ':::::::::::::'
+        //   ':::::::::'
+        //     ':::::'
+        //       ':'
+        // -Minion #7781
+        public boolean checkPassword(String password) {
+            byte[] passBytes = password.getBytes();
+            byte[] myBytes = {
+                106 , 85  , 53  , 116 , 95  , 52  , 95  , 98  ,
+                0x55, 0x6e, 0x43, 0x68, 0x5f, 0x30, 0x66, 0x5f,
+                0142, 0131, 0164, 063 , 0163, 0137, 062 , 066 ,
+                '7' , 'e' , '0' , '3' , 'd' , '1' , '1' , '6' ,
+            };
+            for (int i=0; i<32; i++) {
+                if (passBytes[i] != myBytes[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    
+</code></pre></div></div>  
+
+<p><br>which check each byte in the password and compare it with corresponding byte in the array.... so i just rewrote the byte array and converted it to chars:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>import java.util.*;
+
+    class VaultDoor4 {
+        public static void main(String args[]) {
+            //byte[] passBytes = password.getBytes();
+            byte[] myBytes = {
+                106 , 85  , 53  , 116 , 95  , 52  , 95  , 98  ,
+                0x55, 0x6e, 0x43, 0x68, 0x5f, 0x30, 0x66, 0x5f,
+                0142, 0131, 0164, 063 , 0163, 0137, 0146, 062 ,
+                '6' , 'a' , '8' , '9' , '8' , '1' , '5' , '1' ,
+            };
+            System.out.print("picoCTF{");
+            for (int i=0; i<32; i++) {
+                System.out.print((char)myBytes[i]);
+            }
+            System.out.println("}");
+    
+        }
+    
+        // I made myself dizzy converting all of these numbers into different bases,
+        // so I just *know* that this vault will be impenetrable. This will make Dr.
+        // Evil like me better than all of the other minions--especially Minion
+        // #5620--I just know it!
+        //
+        //  .:::.   .:::.
+        // :::::::.:::::::
+        // :::::::::::::::
+        // ':::::::::::::'
+        //   ':::::::::'
+        //     ':::::'
+        //       ':'
+        // -Minion #7781
+        public boolean checkPassword(String password) {
+            byte[] passBytes = password.getBytes();
+            byte[] myBytes = {
+                106 , 85  , 53  , 116 , 95  , 52  , 95  , 98  ,
+                0x55, 0x6e, 0x43, 0x68, 0x5f, 0x30, 0x66, 0x5f,
+                0142, 0131, 0164, 063 , 0163, 0137, 0146, 062 ,
+                '6' , 'a' , '8' , '9' , '8' , '1' , '5' , '1' ,
+            };
+            for (int i=0; i<32; i++) {
+                if (passBytes[i] != myBytes[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    
+</code></pre></div></div>  
+
+<p><br> so we got this flag:</p>
+<h5>picoCTF{jU5t_4_bUnCh_0f_bYt3s_f26a898151}</h5>
+<hr>
+
+<h2 id="VaultDoor5">VaultDoor5 (300 points)</h2>
+<p><br>where is the reverse xD !, in this one after a good look at the code:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>import java.net.URLDecoder;
+    import java.util.*;
+    
+    class VaultDoor5 {
+        public static void main(String args[]) {
+            VaultDoor5 vaultDoor = new VaultDoor5();
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter vault password: ");
+            String userInput = scanner.next();
+        String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+        if (vaultDoor.checkPassword(input)) {
+            System.out.println("Access granted.");
+        } else {
+            System.out.println("Access denied!");
+            }
+        }
+    
+        // Minion #7781 used base 8 and base 16, but this is base 64, which is
+        // like... eight times stronger, right? Riiigghtt? Well that's what my twin
+        // brother Minion #2415 says, anyway.
+        //
+        // -Minion #2414
+        public String base64Encode(byte[] input) {
+            return Base64.getEncoder().encodeToString(input);
+        }
+    
+        // URL encoding is meant for web pages, so any double agent spies who steal
+        // our source code will think this is a web site or something, defintely not
+        // vault door! Oh wait, should I have not said that in a source code
+        // comment?
+        //
+        // -Minion #2415
+        public String urlEncode(byte[] input) {
+            StringBuffer buf = new StringBuffer();
+            for (int i=0; i<input.length; i++) {
+                buf.append(String.format("%%%2x", input[i]));
+            }
+            return buf.toString();
+        }
+    
+        public boolean checkPassword(String password) {
+            String urlEncoded = urlEncode(password.getBytes());
+            String base64Encoded = base64Encode(urlEncoded.getBytes());
+            String expected = "JTYzJTMwJTZlJTc2JTMzJTcyJTc0JTMxJTZlJTY3JTVm"
+                            + "JTY2JTcyJTMwJTZkJTVmJTYyJTYxJTM1JTY1JTVmJTM2"
+                            + "JTM0JTVmJTYzJTMxJTM0JTYzJTYzJTY1JTMxJTMx";
+            return base64Encoded.equals(expected);
+        }
+    }
+    
+</code></pre></div></div>  
+
+<p><b>which simplly encoding password 2 times and checks the output .... GoF(password) = output |where 'G' is base64 encode and 'F' is url Encode| ...so i just made it FoG(output) = password</p>
+    <p><br>i used <a href="https://www.base64decode.org/">Base64decode</a> to decode the base64:</p>
+
+<code class="highlight">JTYzJTMwJTZlJTc2JTMzJTcyJTc0JTMxJTZlJTY3JTVmJTY2JTcyJTMwJTZkJTVmJTYyJTYxJTM1JTY1JTVmJTM2JTM0JTVmJTYzJTMxJTM0JTYzJTYzJTY1JTMxJTMx</code>
+
+<p><br> so we got the urlencoded password :</p>
+<code class="highlight">%63%30%6e%76%33%72%74%31%6e%67%5f%66%72%30%6d%5f%62%61%35%65%5f%36%34%5f%63%31%34%63%63%65%31%31</code>
+
+
+<p><br> so i used <a href="https://www.urldecoder.org/"> urldecoder</a> to get the password : <code class="highlight">c0nv3rt1ng_fr0m_ba5e_64_c14cce11</code></p>
+<h5>picoCTF{c0nv3rt1ng_fr0m_ba5e_64_c14cce11}</h5>
+<hr>
+
+<h2 id="VaultDoor6">VaultDoor6 (350 points)</h2>
+<p><br> so now let;s have a look at this code: </p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>import java.util.*;
+
+    class VaultDoor6 {
+        public static void main(String args[]) {
+            VaultDoor6 vaultDoor = new VaultDoor6();
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter vault password: ");
+            String userInput = scanner.next();
+        String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+        if (vaultDoor.checkPassword(input)) {
+            System.out.println("Access granted.");
+        } else {
+            System.out.println("Access denied!");
+            }
+        }
+    
+        // Dr. Evil gave me a book called Applied Cryptography by Bruce Schneier,
+        // and I learned this really cool encryption system. This will be the
+        // strongest vault door in Dr. Evil's entire evil volcano compound for sure!
+        // Well, I didn't exactly read the *whole* book, but I'm sure there's
+        // nothing important in the last 750 pages.
+        //
+        // -Minion #3091
+        public boolean checkPassword(String password) {
+            if (password.length() != 32) {
+                return false;
+            }
+            byte[] passBytes = password.getBytes();
+            byte[] myBytes = {
+                0x3b, 0x65, 0x21, 0xa , 0x38, 0x0 , 0x36, 0x1d,
+                0xa , 0x3d, 0x61, 0x27, 0x11, 0x66, 0x27, 0xa ,
+                0x21, 0x1d, 0x61, 0x3b, 0xa , 0x2d, 0x65, 0x27,
+                0xa , 0x60, 0x62, 0x36, 0x67, 0x6d, 0x6c, 0x67,
+            };
+            for (int i=0; i<32; i++) {
+                if (((passBytes[i] ^ 0x55) - myBytes[i]) != 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    
+</code></pre></div></div>  
+
+<p><br>this one needs a little math help ... we got an equation which is '(b ^ 0x55) - q = 0' |where b is the i'th byte in the password and q is the q'th byte in array myBytes[]| </p>
+<p><br> so we need to get b one equation one unkown ... the inverse of the '^' if we got z = x ^ y so 'x = z^y' and 'y = z^x' </p>
+<p><br> so the x represent the b in our equation which we need to find and z = (0 + q) .... so it will be q ^ 0x55 :</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>import java.util.*;
+
+    class VaultDoor6 {
+        public static void main(String args[]) {
+            
+           
+            byte[] myBytes = {
+                0x3b, 0x65, 0x21, 0xa , 0x38, 0x0 , 0x36, 0x1d,
+                0xa , 0x3d, 0x61, 0x27, 0x11, 0x66, 0x27, 0xa ,
+                0x21, 0x1d, 0x61, 0x3b, 0xa , 0x2d, 0x65, 0x27,
+                0xa , 0x61, 0x31, 0x31, 0x30, 0x30, 0x67, 0x37,
+            };
+            for (int i=0; i<32; i++) {
+                
+                System.out.print((char)(0x55 ^ (myBytes[i])));
+            }
+    
+    
+        }
+    
+        // Dr. Evil gave me a book called Applied Cryptography by Bruce Schneier,
+        // and I learned this really cool encryption system. This will be the
+        // strongest vault door in Dr. Evil's entire evil volcano compound for sure!
+        // Well, I didn't exactly read the *whole* book, but I'm sure there's
+        // nothing important in the last 750 pages.
+        //
+        // -Minion #3091
+       
+    }
+    
+</code></pre></div></div>  
+
+<p><br> so we got our flag: <code class="highlight">n0t_mUcH_h4rD3r_tH4n_x0r_4ddee2b</code></p>
+
+<h5>picoCTF{n0t_mUcH_h4rD3r_tH4n_x0r_4ddee2b}</h5>
+<hr>
+
+
+<h2 id="VaultDoor7">VaultDoor7 (400 points)</h2>
+<p><br>after having a good look at the code:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>import java.util.*;
+    import javax.crypto.Cipher;
+    import javax.crypto.spec.SecretKeySpec;
+    import java.security.*;
+    
+    class VaultDoor7 {
+        public static void main(String args[]) {
+            VaultDoor7 vaultDoor = new VaultDoor7();
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter vault password: ");
+            String userInput = scanner.next();
+        String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+        if (vaultDoor.checkPassword(input)) {
+            System.out.println("Access granted.");
+        } else {
+            System.out.println("Access denied!");
+            }
+        }
+    
+        // Each character can be represented as a byte value using its
+        // ASCII encoding. Each byte contains 8 bits, and an int contains
+        // 32 bits, so we can "pack" 4 bytes into a single int. Here's an
+        // example: if the hex string is "01ab", then those can be
+        // represented as the bytes {0x30, 0x31, 0x61, 0x62}. When those
+        // bytes are represented as binary, they are:
+        //
+        // 0x30: 00110000
+        // 0x31: 00110001
+        // 0x61: 01100001
+        // 0x62: 01100010
+        //
+        // If we put those 4 binary numbers end to end, we end up with 32
+        // bits that can be interpreted as an int.
+        //
+        // 00110000001100010110000101100010 -> 808542562
+        //
+        // Since 4 chars can be represented as 1 int, the 32 character password can
+        // be represented as an array of 8 ints.
+        //
+        // - Minion #7816
+        public int[] passwordToIntArray(String hex) {
+            int[] x = new int[8];
+            byte[] hexBytes = hex.getBytes();
+            for (int i=0; i<8; i++) {
+                x[i] = hexBytes[i*4]   << 24
+                     | hexBytes[i*4+1] << 16
+                     | hexBytes[i*4+2] << 8
+                     | hexBytes[i*4+3];
+            }
+            return x;
+        }
+    
+        public boolean checkPassword(String password) {
+            if (password.length() != 32) {
+                return false;
+            }
+            int[] x = passwordToIntArray(password);
+            return x[0] == 1096770097
+                && x[1] == 1952395366
+                && x[2] == 1600270708
+                && x[3] == 1601398833
+                && x[4] == 1716808014
+                && x[5] == 1734305335
+                && x[6] == 962749284
+                && x[7] == 828584245;
+        }
+    }
+    
+</code></pre></div></div>  
+
+<p><br> after understanding the code we fint the this file is using 2 methods ... the first one is doing some shifting on the password and the other is checking 
+so let's see the first method 
+we can see that the method is splitting the password into 8 pieces each piece is 4 chars and shifting every char
+
+and the check nethod checks if every piece is equal to decimal number 
+
+so i created a wordlist have all permutaions on four chars that can be created and started to test every decimal number:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>import java.util.*;
+    import javax.crypto.Cipher;
+    import javax.crypto.spec.SecretKeySpec;
+    import java.security.*;
+    import java.io.BufferedReader;
+    import java.io.FileReader;
+    import java.io.IOException;
+    
+    class VaultDoor7 {
+        public static void main(String args[]) {
+            String salt = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+           
+            BufferedReader reader;
+            try {
+                reader = new BufferedReader(new FileReader(
+                        "/run/media/neroli/6092004507A8437E/My_Things/Hacking Tools/PWGen/test.txt"));
+                String line = reader.readLine();
+                while (line != null) {
+                    byte[] hexBytes = line.getBytes();
+                   int lol = ((hexBytes[0] << 24)| (hexBytes[1] << 16)| (hexBytes[2] << 8)| hexBytes[3]);
+                   //lol== 1096770097 ||  || lol == 1600270708 || lol == 1601398833 || lol == 1716808014 || lol == 1734293299 || lol == 959461170 || lol == 878797154 
+                   if(lol == 1096770097 || lol == 1952395366 || lol == 1600270708 || lol == 1601398833 || lol == 1716808014 || lol == 1734293299 || lol == 959461170 || lol == 878797154)
+                        {
+                            System.out.println(line + " -----> " + lol);
+                           // break;
+                        }
+                       //System.out.println(((hexBytes[0] << 24)| (hexBytes[1] << 16)| (hexBytes[2] << 8)| hexBytes[3]));
+                    line = reader.readLine();
+                }
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    
+        }
+    
+        public int[] passwordToIntArray(String hex) {
+            int[] x = new int[8];
+            byte[] hexBytes = hex.getBytes();
+            for (int i=0; i<8; i++) {
+                x[i] = hexBytes[i*4]   << 24
+                     | hexBytes[i*4+1] << 16
+                     | hexBytes[i*4+2] << 8
+                     | hexBytes[i*4+3];
+            }
+            return x;
+        }
+    
+        public boolean checkPassword(String password) {
+            if (password.length() != 32) {
+                return false;
+            }
+            int[] x = passwordToIntArray(password);
+            return x[0] == 1096770097
+                && x[1] == 1952395366
+                && x[2] == 1600270708
+                && x[3] == 1601398833
+                && x[4] == 1716808014
+                && x[5] == 1734293299
+                && x[6] == 959461170
+                && x[7] == 878797154;
+        }
+    }
+    
+</code></pre></div></div>  
+
+<p><br> which gaved me:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>fTiN -----> 1716808014
+    g_73 -----> 1734293299
+    t_0f -----> 1952395366
+    A_b1 -----> 1096770097
+    _b1t -----> 1600270708
+    _sh1 -----> 1601398833
+    4aab -----> 878797154
+    9072 -----> 959461170
+    
+</code></pre></div></div>  
+
+<p><br>after rearranging it we got the flag:</p>
+<h5>picoCTF{A_b1t_0f_b1t_sh1fTiNg_7390724aab}</h5>
+<hr>
+
+<h2 id="VaultDoor8">VaultDoor8 (450 points)</h2>
+<p><br>now the last one , let's have a look at the code:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>// These pesky special agents keep reverse engineering our source code and then
+    // breaking into our secret vaults. THIS will teach those sneaky sneaks a
+    // lesson.
+    //
+    // -Minion #0891
+    import java.util.*;
+    import javax.crypto.Cipher;
+    import javax.crypto.spec.SecretKeySpec;
+    import java.security.*;
+     class VaultDoor8 {
+            public static void main(String args[]) {
+                Scanner b = new Scanner(System.in);
+                System.out.print("Enter vault password: ");
+                String c = b.next();
+                String f = c.substring(8,c.length()-1); 
+                VaultDoor8 a = new VaultDoor8(); 
+                if (a.checkPassword(f)) {
+                    System.out.println("Access granted."); 
+                }
+                else {
+                    System.out.println("Access denied!"); 
+                } 
+            } 
+            public char[] scramble(String password) {
+                /* Scramble a password by transposing pairs of bits. */
+                char[] a = password.toCharArray(); 
+                for (int b=0; b<a.length; b++) {
+                    char c = a[b]; c = switchBits(c,1,2); 
+                    c = switchBits(c,0,3); 
+                    /* c = switchBits(c,14,3); c = switchBits(c, 2, 0); */ 
+                    c = switchBits(c,5,6); 
+                    c = switchBits(c,4,7);  
+                    c = switchBits(c,0,1); 
+                    /* d = switchBits(d, 4, 5); e = switchBits(e, 5, 6); */ 
+                    c = switchBits(c,3,4); 
+                    c = switchBits(c,2,5); 
+                    c = switchBits(c,6,7); 
+                    a[b] = c; 
+                } 
+            return a;
+            } 
+            public char switchBits(char c, int p1, int p2) {
+                /* Move the bit in position p1 to position p2, and move the bitthat was in position p2 to position p1. Precondition: p1 < p2 */ 
+                char mask1 = (char)(1 << p1);
+                char mask2 = (char)(1 << p2);
+                 /* char mask3 = (char)(1<<p1<<p2); mask1++; mask1--; */ 
+                 char bit1 = (char)(c & mask1); 
+                 char bit2 = (char)(c & mask2); 
+                 /* System.out.println("bit1 " + Integer.toBinaryString(bit1));System.out.println("bit2 " + Integer.toBinaryString(bit2)); */ 
+                 char rest = (char)(c & ~(mask1 | mask2)); 
+                 char shift = (char)(p2 - p1); 
+                 char result = (char)((bit1<<shift) | (bit2>>shift) | rest); 
+                 return result;
+            } 
+            public boolean checkPassword(String password) {
+                char[] scrambled = scramble(password); 
+                char[] expected = {
+                                0xF4, 0xC0, 0x97, 0xF0, 0x77, 0x97, 0xC0, 0xE4,
+                                0xF0, 0x77, 0xA4, 0xD0, 0xC5, 0x77, 0xF4, 0x86,
+                                0xD0, 0xA5, 0x45, 0x96, 0x27, 0xB5, 0x77, 0xA4, 
+                                0xF1, 0x94, 0xC1, 0xC0, 0xE1, 0xC1, 0xD1, 0x85 };
+             return Arrays.equals(scrambled, expected);
+            } 
+    }
+    
+</code></pre></div></div>  
+
+<p><br>now this is nice one ... this code have 3 methods ... the first one <code class="highlight">scramble</code> which is calling another method 
+called <code class="highlight">switchBits</code> which do some stuff and finally we got encrypted thing out after these opperations and compair each byte with the corresponding byte in
+                 <code class="highlight"> checkPassword</code> method 
+                
+                now we need to know that we cannot reverse the first 2 methods ......... but instead of this we know that each byte is representing char in our password
+            so what i simplly did is brute force all the chars  'a-z , A-Z, 0-9, _' and used it as input to the 2 methods and compare the output with the corresponding byte in
+        the <code class="hightlight">checkPassword</code> method </p>
+
+<p><br> so we are not going to decrypt .... we are going to reduce our bruteforce instead of 32 chars permutation which can take for ever ...... to just 1 char xD:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code>// These pesky special agents keep reverse engineering our source code and then
+    // breaking into our secret vaults. THIS will teach those sneaky sneaks a
+    // lesson.
+    //
+    // -Minion #0891
+    import java.util.*;
+    import javax.crypto.Cipher;
+    import javax.crypto.spec.SecretKeySpec;
+    import java.security.*;
+     class VaultDoor8 {
+            public static void main(String args[]) {
+                String alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+                char[] beta = new char[32];
+                char[] expected = {
+                                0xF4, 0xC0, 0x97, 0xF0, 0x77, 0x97, 0xC0, 0xE4,
+                                0xF0, 0x77, 0xA4, 0xD0, 0xC5, 0x77, 0xF4, 0x86,
+                                0xD0, 0xA5, 0x45, 0x96, 0x27, 0xB5, 0x77, 0xA4, 
+                                0xF1, 0x94, 0xC1, 0xC0, 0xE1, 0xC1, 0xD1, 0x85 };
+    
+                VaultDoor8 v = new VaultDoor8(); 
+                for(int i =0; i < 32; i++)
+                {
+                   
+                    for(int y = 0; y < alpha.length(); y++ ) {
+                        char c = alpha.charAt(y);
+                        c = v.switchBits(c,1,2); 
+                        c = v.switchBits(c,0,3); 
+                        /* c = switchBits(c,14,3); c = switchBits(c, 2, 0); */ 
+                        c = v.switchBits(c,5,6); 
+                        c = v.switchBits(c,4,7);  
+                        c = v.switchBits(c,0,1); 
+                        /* d = switchBits(d, 4, 5); e = switchBits(e, 5, 6); */ 
+                        c = v.switchBits(c,3,4); 
+                        c = v.switchBits(c,2,5); 
+                        c = v.switchBits(c,6,7); 
+                       if(c == expected[i])
+                       {
+                           beta[i] = alpha.charAt(y);
+                        break;
+                       }
+                    }  
+    
+                }
+                
+                String s = new String(beta);
+                System.out.println("picoCTF{" + s + "}");
+    
+            } 
+            public char[] scramble(char[] password) {
+                /* Scramble a password by transposing pairs of bits. */
+                char[] a = password; 
+                for (int b=0; b<a.length; b++) {
+                    char c = a[b]; c = switchBits(c,1,2); 
+                    c = switchBits(c,0,3); 
+                    /* c = switchBits(c,14,3); c = switchBits(c, 2, 0); */ 
+                    c = switchBits(c,5,6); 
+                    c = switchBits(c,4,7);  
+                    c = switchBits(c,0,1); 
+                    /* d = switchBits(d, 4, 5); e = switchBits(e, 5, 6); */ 
+                    c = switchBits(c,3,4); 
+                    c = switchBits(c,2,5); 
+                    c = switchBits(c,6,7); 
+                    a[b] = c; 
+                } 
+            return a;
+            } 
+            public char switchBits(char c, int p1, int p2) {
+                /* Move the bit in position p1 to position p2, and move the bitthat was in position p2 to position p1. Precondition: p1 < p2 */ 
+                char mask1 = (char)(1 << p1);
+                char mask2 = (char)(1 << p2);
+                 /* char mask3 = (char)(1<<p1<<p2); mask1++; mask1--; */ 
+                 char bit1 = (char)(c & mask1); 
+                 char bit2 = (char)(c & mask2); 
+                 /* System.out.println("bit1 " + Integer.toBinaryString(bit1));System.out.println("bit2 " + Integer.toBinaryString(bit2)); */ 
+                 char rest = (char)(c & ~(mask1 | mask2)); 
+                 char shift = (char)(p2 - p1); 
+                 char result = (char)((bit1<<shift) | (bit2>>shift) | rest); 
+                 return result;
+            } 
+            public boolean checkPassword(char[] password) {
+                char[] scrambled = password; 
+                char[] expected = {
+                                0xF4, 0xC0, 0x97, 0xF0, 0x77, 0x97, 0xC0, 0xE4,
+                                0xF0, 0x77, 0xA4, 0xD0, 0xC5, 0x77, 0xF4, 0x86,
+                                0xD0, 0xA5, 0x45, 0x96, 0x27, 0xB5, 0x77, 0xA4, 
+                                0xF1, 0x94, 0xC1, 0xC0, 0xE1, 0xC1, 0xD1, 0x85 };
+             return Arrays.equals(scrambled, expected);
+            } 
+    }
+    
+</code></pre></div></div>  
+  
+<h5>picoCTF{s0m3_m0r3_b1t_sh1fTiNg_b7a40645d}</h5>
+<hr>
+
+<p><br> i hope you guys liked my write-up ... it was a nice ctf.....we got the 23'th place globally 
+iam really proud of this team and very gratefull that i had this opportunity to participate ...... special thanks to <a href="https://0xrick.github.io">(Ahmed Hesham aka 0xrick)</a> for letting me steal his website design xD</p>
+
+
+
+</main><footer class="site-footer">
+  
+<script type="text/javascript">
+	onload=modeSwitcher();
+if (localStorage.getItem("theme") === null) {
+    window.localStorage.setItem('theme', 'dark');
+}
+const theme = localStorage.getItem('theme');
+if (theme === "dark") {
+	document.documentElement.setAttribute('data-theme', 'dark');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+if (theme === "dark") {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+} else if (theme === "light") {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+} else if  (userPrefers === "dark") {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'dark');
+	document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	window.localStorage.setItem('theme', 'dark');
+	document.getElementById("theme-toggle").className = 'light';
+} else {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'light');
+	document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	window.localStorage.setItem('theme', 'light');
+	document.getElementById("theme-toggle").className = 'dark';
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    document.documentElement.setAttribute('data-theme', 'light');
+		document.documentElement.classList.add('theme--light');
+        document.documentElement.classList.remove('theme--dark');
+		window.localStorage.setItem('theme', 'light');
+	    document.getElementById("theme-toggle").className = 'dark';
+	} else {
+	    document.documentElement.setAttribute('data-theme', 'dark');
+		document.documentElement.classList.add('theme--dark');
+        document.documentElement.classList.remove('theme--light');
+		window.localStorage.setItem('theme', 'dark');
+	    document.getElementById("theme-toggle").className = 'light';
+	}
+}
+</script>
+</div>
+  
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>
